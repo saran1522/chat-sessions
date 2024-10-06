@@ -16,7 +16,7 @@ interface SessionData {
   handleCurrentSession: (id: string) => void;
 }
 
-const ChatContext = createContext({});
+const ChatContext = createContext<SessionData | undefined>(undefined);
 
 export default function ChatProvider({
   children,
@@ -74,7 +74,7 @@ export default function ChatProvider({
     error,
     currentSession,
     handleCurrentSession,
-  };
+  } as SessionData;
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
 }
 
